@@ -11,7 +11,6 @@ def index(request):
     results = {}
     blogs = Blog.objects.filter(is_published=True).order_by('-publish_date')
     results['blogs'] = blogs
-    print results
 
     return render(request, 'index.html', results)
 
