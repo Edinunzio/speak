@@ -6,7 +6,7 @@
     {% for blog in blogs %}
     <div class="blogs">
       <dt>
-        <a href="{{blog.slug}}">{{ blog.title }}</a> | <small>By: {{ blog.author }}</small>
+        <a href="{{blog.slug}}">{{ blog.title }}</a> | {{ blog.author }} 
       </dt>
       <dd><small>{{ blog.publish_date }}</small></dd>
       <dd>
