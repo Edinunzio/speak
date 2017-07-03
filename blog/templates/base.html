@@ -12,9 +12,10 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-2 col-md-2 col-lg-2">
-        <div class="logo">LOGO</div>
+        <div class="logo"><h1>LOGO</h1></div>
       </div>
       <div class="col-sm-10 col-md-10 col-lg-10">
+        {% block topbar %}{% endblock topbar %}
       </div>
     </div>
     <div class="row">
@@ -25,9 +26,9 @@
         {% block content %}{% endblock content %}
       </div>
       <div class="side-bar col-sm-2 col-md-2 col-lg-2">
-        
       </div>
     </div>
+    {% include "partials/footer.html" %}
   </div>
 </body>
 </html>

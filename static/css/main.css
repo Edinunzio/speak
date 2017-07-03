@@ -7,6 +7,7 @@ a{
     min-height: 50px;
     background-color:#777;
     text-align: center;
+    color: #fff;
 }
 
 .blogs {
@@ -16,4 +17,21 @@ a{
     border: 2px solid #666;
     margin-top: 10px;
     padding: 10px;
+    background-color: #eee;
+}
+
+.about p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    min-height: 100px;
+}
+
+.about img {
+    width: 100px;
+    float: left;
+    padding-right: 10px;
+}
+
+.container-fluid{
+    background-color: #fff;
 }

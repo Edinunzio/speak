@@ -7,13 +7,6 @@ from .models import Blog
 from django.contrib.auth.models import User
 
 
-def get_user_name(username):
-    """Temp helper method to return full name."""
-    user = User.objects.get(username=username)
-    fullname = user.first_name + ' ' + user.last_name
-    return fullname
-
-
 def index(request):
     """Landing page for all blogs."""
     results = {}
@@ -27,7 +20,21 @@ def detail(request, slug):
     """Renders individual blog post."""
     results = {}
     blog = Blog.objects.get(slug__iexact=slug)
-    results['author'] = get_user_name(blog.author)
     results['blog'] = blog
 
     return render(request, 'detail.html', results)
+
+
+def about(request):
+    """About page."""
+
+    return render(request, 'about.html', None)
+
+
+def authors(request):
+    """About page."""
+    _authors = User.objects.filter(is_staff=True)
+    results = {}
+    results['authors'] = _authors
+
+    return render(request, 'authors.html', results)
