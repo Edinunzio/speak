@@ -1,11 +1,15 @@
-<div class="header">
-  <h1>{{ blog.title }}</h1>
-  <h2>{{ blog.subtitle }}</h2>
-  <p>Published by: {{ blog.author }} | {{ blog.publish_date }}</p>
-</div>
+{% extends 'base.html' %}
 
-<div class="content">
-  <p class="lede">{{ blog.lede }}</p>
-  <hr>
-  {{ blog.content|linebreaks }}
-</div>
+{% block content %}
+  <div class="header">
+    <h1>{{ blog.title }}</h1>
+    <h2>{{ blog.subtitle }}</h2>
+    <p>Published by: {{ blog.author }} | {{ blog.publish_date }}</p>
+  </div>
+
+  <div class="content">
+    <h5>{{ blog.lede }}</h5>
+    <hr>
+    {{ blog.content|linebreaks }}
+  </div>
+{% endblock content %}

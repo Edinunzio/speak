@@ -1,0 +1,26 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>From Server to Server</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
+  <!-- Latest compiled and minified CSS -->
+  
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <div class="container-fluid">
+    {% block content %}{% endblock content %}
+  </div>
+</body>
+</html>
