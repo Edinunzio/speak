@@ -1,26 +1,33 @@
 <!doctype html>
-
 <html lang="en">
 <head>
   <meta charset="utf-8">
-
-  <title>From Server to Server</title>
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-  <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
-  <!-- Latest compiled and minified CSS -->
-  
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="{% static 'js/bootstrap.min.js' %}"></script>
-
-  <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
-  <![endif]-->
+  <title>
+    {% block page_title %}From Server to Server{% endblock page_title %}
+  </title>
+  {% include "partials/head.html" %}
 </head>
 
 <body>
   <div class="container-fluid">
-    {% block content %}{% endblock content %}
+    <div class="row">
+      <div class="col-sm-2 col-md-2 col-lg-2">
+        <div class="logo">LOGO</div>
+      </div>
+      <div class="col-sm-10 col-md-10 col-lg-10">
+      </div>
+    </div>
+    <div class="row">
+      <div class="side-bar col-sm-2 col-md-2 col-lg-2">
+        {% include "partials/nav.html" %}
+      </div>
+      <div class="main-section col-sm-8 col-md-8 col-lg-8">
+        {% block content %}{% endblock content %}
+      </div>
+      <div class="side-bar col-sm-2 col-md-2 col-lg-2">
+        
+      </div>
+    </div>
   </div>
 </body>
 </html>

@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
+{% block page_title %}{{ blog.title }}{% endblock page_title %}
 
 {% block content %}
   <div class="header">
     <h1>{{ blog.title }}</h1>
-    <h2>{{ blog.subtitle }}</h2>
+    <h2><small>{{ blog.subtitle }}</small></h2>
     <p>Published by: {{ blog.author }} | {{ blog.publish_date }}</p>
   </div>
 
   <div class="content">
-    <h5>{{ blog.lede }}</h5>
+    <p class="lead">{{ blog.lede }}</p>
     <hr>
     {{ blog.content|linebreaks }}
   </div>
