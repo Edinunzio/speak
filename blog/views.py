@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 
 from .models import Blog
+from django.contrib.auth.models import User
 
 
 def index(request):
@@ -22,3 +23,18 @@ def detail(request, slug):
     results['blog'] = blog
 
     return render(request, 'detail.html', results)
+
+
+def about(request):
+    """About page."""
+
+    return render(request, 'about.html', None)
+
+
+def authors(request):
+    """About page."""
+    _authors = User.objects.filter(is_staff=True)
+    results = {}
+    results['authors'] = _authors
+
+    return render(request, 'authors.html', results)

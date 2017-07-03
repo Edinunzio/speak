@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block page_title %}Authors{% endblock page_title %}
+{% block topbar %}<h1>Authors</h1>{% endblock topbar %}
+
+{% block content %}
+  {% for author in authors %}
+  <div class="content">
+    {{ author.get_full_name }}
+    <hr>
+  </div>
+  {% endfor %}
+{% endblock content %}

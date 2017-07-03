@@ -22,5 +22,7 @@ from .settings import URL_ADMIN
 urlpatterns = [
     url(URL_ADMIN + '/', admin.site.urls),
     url(r'^$', views.index),
+    url(r'^about/$', views.about),
+    url(r'^authors/$', views.authors),
     url(r'^(?P<slug>[-\w]+)/$', views.detail),
 ]

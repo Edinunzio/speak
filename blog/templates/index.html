@@ -1,11 +1,23 @@
 {% extends 'base.html' %}
 
+{% block topbar %}<h1>All Blogs</h1>{% endblock topbar %}
+
 {% block content %}
-  <ul class="blogs">
-  {% for blog in blogs %}
-    <li>
-      <a href="{{blog.slug}}">{{ blog.title }}</a>
-    </li>
-  {% endfor %}
-  </ul>
+  {% if blogs %}
+    <dl>
+    {% for blog in blogs %}
+    <div class="blogs">
+      <dt>
+        <a href="{{blog.slug}}">{{ blog.title }}</a> | {{ blog.author }} 
+      </dt>
+      <dd><small>{{ blog.publish_date }}</small></dd>
+      <dd>
+        {{ blog.content|truncatewords:50 }}
+      </dd>
+    </div>
+    {% endfor %}
+    </dl>
+  {% else %}
+    <p>Nothing is currently published. Come back soon!</p>
+  {% endif %}
 {% endblock content %}

@@ -2,6 +2,10 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.contrib.auth.models import User
+
+USERS = User.objects.all()
+USER_CHOICES = ((u.get_full_name(), u.get_full_name()) for u in USERS)
 
 
 class Blog(models.Model):
@@ -12,9 +16,7 @@ class Blog(models.Model):
     subtitle = models.CharField(max_length=300, default='')
     publish_date = models.DateField(blank=True, null=True)
     is_published = models.BooleanField(default=False)
-    # Will probably want to make a separate author model
-    # and link this via foreign key
-    author = models.CharField(max_length=300)
+    author = models.CharField(max_length=300, choices=USER_CHOICES, default='')
     lede = models.TextField(blank=True, default='')
     content = models.TextField(blank=True, default='')
 
