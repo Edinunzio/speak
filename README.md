@@ -6,4 +6,4 @@ Speak, is an attempt to make a bare bones django-based cms blogging platform. Th
  
 The [wiki](https://github.com/Edinunzio/speak/wiki) is in placeholder mode and will be updated as the project progresses.
 
-[Check here]([screenshots](https://github.com/Edinunzio/speak/wiki/Screenshots) for current screenshots. These will definitely change as the project grows.
+[Check here](https://github.com/Edinunzio/speak/wiki/Screenshots) for current screenshots. These will definitely change as the project grows.
