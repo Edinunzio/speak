@@ -35,6 +35,21 @@ def authors(request):
     """About page."""
     _authors = User.objects.filter(is_staff=True)
     results = {}
+    author_data = []
+    for a in _authors:
+        fullname = a.get_full_name()
+        blogs = Blog.objects.filter(author__iexact=fullname)
+        _blogs = [
+            {
+                'title': blog.title,
+                'slug': blog.slug,
+                'lede': blog.lede
+            } for blog in blogs
+        ]
+
+        author_data.append({'author': fullname, 'blogs': _blogs})
+
     results['authors'] = _authors
+    results['author_data'] = author_data
 
     return render(request, 'authors.html', results)
