@@ -8,9 +8,9 @@
     <p>Published by: {{ blog.author }} | {{ blog.publish_date }}</p>
   </div>
 
-  <div class="content">
-    <p class="lead">{{ blog.lede }}</p>
+  <div class="content detail">
     <hr>
+    <p class="lead">{{ blog.lede }}</p>
     {{ blog.content|linebreaks }}
   </div>
 {% endblock content %}
