@@ -12,10 +12,12 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-2 col-md-2 col-lg-2">
-        <div class="logo"><h1>LOGO</h1></div>
+        <a href="/"><div class="logo"><span class="glyphicon glyphicon-transfer" aria-hidden="true"></span></div></a>
       </div>
       <div class="col-sm-10 col-md-10 col-lg-10">
-        {% block topbar %}{% endblock topbar %}
+        <div class="page-header">
+          {% block topbar %}<h1>From server to server <small>Fumbling through analog to digital</small></h1>{% endblock topbar %}
+        </div>
       </div>
     </div>
     <div class="row">
