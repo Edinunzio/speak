@@ -32,6 +32,42 @@ a{
     padding-right: 10px;
 }
 
+.authors div {
+    min-height: 100px;
+    margin-bottom: 10px;
+}
+
+span.glyphicon-user{
+    font-size: 80px;
+}
+
+div.info {
+    border-radius: 5px;
+    border: 1px solid #666;
+    background-color: #ddd;
+}
+
 .container-fluid{
     background-color: #fff;
+}
+
+div.footer div.container-fluid{
+    background-color: #000;
+}
+
+.footer{
+    background-color: #000;
+    color: #fff;
+    clear: both;
+    height: 75px;
+}
+
+nav a{
+    color: #fff;
+    position: relative;
+    top: 20px;
+}
+
+div.detail {
+    padding-bottom: 15%;
 }
