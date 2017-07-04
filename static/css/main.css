@@ -37,8 +37,12 @@ a{
     margin-bottom: 10px;
 }
 
-span.glyphicon-user{
+span.glyphicon{
     font-size: 80px;
+}
+
+.logo span.glyphicon{
+    margin-top: 10px;
 }
 
 div.info {
@@ -47,11 +51,11 @@ div.info {
     background-color: #ddd;
 }
 
-.container-fluid{
+.main-section{
     background-color: #fff;
 }
 
-div.footer div.container-fluid{
+div.footer{
     background-color: #000;
 }
 

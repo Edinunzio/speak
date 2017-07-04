@@ -1,16 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block page_title %}Authors{% endblock page_title %}
-{% block topbar %}<h1>Authors</h1>{% endblock topbar %}
 
 {% block content %}
+<div class="row">
+  <div class="col-sm-3 col-md-3 col-lg-3">
+    <h3>Authors</h3>
+  </div>
+  <div class="col-sm-9 col-md-9 col-lg-9"></div>
+</div>
   {% for a in author_data %}
   <div class="content authors row">
-    <div class="col-sm-4 col-md-4 col-lg-4 text-center">
+    <div class="col-sm-3 col-md-3 col-lg-3">
       <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
       <p>{{ a.author }}</p>
     </div>
-    <div class="col-sm-8 col-md-8 col-lg-8 info">
+    <div class="col-sm-9 col-md-9 col-lg-9 info">
       <dl>
       {% for b in a.blogs %}
         <dt>
