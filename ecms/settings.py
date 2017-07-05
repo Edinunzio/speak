@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-from os.path import abspath, basename, dirname, join, normpath
+from os.path import dirname
+
 from django.core.exceptions import ImproperlyConfigured
 
 
