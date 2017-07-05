@@ -25,3 +25,22 @@ class Blog(models.Model):
 
         verbose_name = 'Blog'
         verbose_name_plural = 'Blogs'
+
+
+def map_blogs_to_author(query):
+    """Method that returns object of mapped blogs to user."""
+
+    author_data = []
+    for a in query:
+        fullname = a.get_full_name()
+        blogs = Blog.objects.filter(author__iexact=fullname)
+        _blogs = [
+            {
+                'title': blog.title,
+                'slug': blog.slug,
+                'lede': blog.lede
+            } for blog in blogs
+        ]
+
+        author_data.append({'author': fullname, 'blogs': _blogs})
+    return author_data

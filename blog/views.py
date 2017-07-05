@@ -1,9 +1,9 @@
-# -*- coding: utf-8 -*-
+"""View methods."""
 from __future__ import unicode_literals
 
 from django.shortcuts import render
 
-from .models import Blog
+from .models import Blog, map_blogs_to_author
 from django.contrib.auth.models import User
 
 
@@ -32,24 +32,11 @@ def about(request):
 
 
 def authors(request):
-    """About page."""
+    """About authors page."""
     _authors = User.objects.filter(is_staff=True)
     results = {}
-    author_data = []
-    for a in _authors:
-        fullname = a.get_full_name()
-        blogs = Blog.objects.filter(author__iexact=fullname)
-        _blogs = [
-            {
-                'title': blog.title,
-                'slug': blog.slug,
-                'lede': blog.lede
-            } for blog in blogs
-        ]
+    author_data = map_blogs_to_author(_authors)
 
-        author_data.append({'author': fullname, 'blogs': _blogs})
-
-    results['authors'] = _authors
     results['author_data'] = author_data
 
     return render(request, 'authors.html', results)
