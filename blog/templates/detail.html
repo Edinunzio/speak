@@ -2,13 +2,8 @@
 {% block page_title %}{{ blog.title }}{% endblock page_title %}
 
 {% block content %}
-  <div class="header">
-    <h3>{{ blog.title }}:<small> {{ blog.subtitle }}</small></h3>
-    <p>Published by: {{ blog.author }} | {{ blog.publish_date }}</p>
-  </div>
-
-  <div class="content detail">
-    <p class="lead">{{ blog.lede }}</p>
-    {{ blog.content|linebreaks }}
-  </div>
+  <h3>{{ blog.title }}:<small> {{ blog.subtitle }}</small></h3>
+  <p>Published by: {{ blog.author }} | {{ blog.publish_date }}</p>
+  <p class="lead">{{ blog.lede }}</p>
+  {{ blog.content|linebreaks }}
 {% endblock content %}
