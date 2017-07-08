@@ -16,7 +16,7 @@
       </div>
       <div class="col-sm-10 col-md-10 col-lg-10">
         <div class="page-header">
-          {% block topbar %}<h1>From server to server <small>Fumbling through analog to digital</small></h1>{% endblock topbar %}
+          {% block topbar %}<h1>From server to server: <small>Fumbling through analog to digital</small></h1>{% endblock topbar %}
         </div>
       </div>
     </div>
@@ -24,14 +24,15 @@
       <div class="side-bar col-sm-2 col-md-2 col-lg-2">
         {% include "partials/nav.html" %}
       </div>
-      <div class="main-section col-sm-8 col-md-8 col-lg-8">
+      <div class="col-sm-9 col-md-9 col-lg-9">
         {% block content %}{% endblock content %}
-      </div>
-      <div class="side-bar col-sm-2 col-md-2 col-lg-2">
       </div>
     </div>
   </div>
-  <br />
-  {% include "partials/footer.html" %}
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      {% include "partials/footer.html" %}
+    </div>
+  </div>
 </body>
 </html>

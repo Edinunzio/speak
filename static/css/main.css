@@ -1,3 +1,4 @@
+body { padding-bottom: 90px; }
 a{
     text-decoration: none;
 }
@@ -10,68 +11,29 @@ a{
     color: #fff;
 }
 
-.blogs {
-    width: 100%;
-    height: 250%;
-    border-radius: 5px;
-    border: 2px solid #666;
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #eee;
-}
-
-.about p {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    min-height: 100px;
-}
-
 .about img {
     width: 100px;
-    float: left;
-    padding-right: 10px;
-}
-
-.authors div {
-    min-height: 100px;
-    margin-bottom: 10px;
 }
 
 span.glyphicon{
     font-size: 80px;
 }
 
+.authors span.glyphicon{
+    margin-right: 20px;
+}
+
 .logo span.glyphicon{
     margin-top: 10px;
-}
-
-div.info {
-    border-radius: 5px;
-    border: 1px solid #666;
-    background-color: #ddd;
-}
-
-.main-section{
-    background-color: #fff;
-}
-
-div.footer{
-    background-color: #000;
 }
 
 .footer{
     background-color: #000;
     color: #fff;
-    clear: both;
-    height: 75px;
+    padding: 10px;
 }
 
 nav a{
     color: #fff;
-    position: relative;
-    top: 20px;
 }
 
-div.detail {
-    padding-bottom: 15%;
-}

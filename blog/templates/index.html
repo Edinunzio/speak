@@ -3,19 +3,19 @@
 {% block content %}
 <h3>All Blogs</h3>
   {% if blogs %}
-    <dl>
     {% for blog in blogs %}
-    <div class="blogs">
-      <dt>
-        <a href="{{blog.slug}}">{{ blog.title }}</a> | {{ blog.author }} 
-      </dt>
-      <dd><small>{{ blog.publish_date }}</small></dd>
-      <dd>
-        {{ blog.content|truncatewords:50 }}
-      </dd>
-    </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4><a href="{{blog.slug}}" class="panel-title">{{ blog.title }}</a>
+          </h4>
+        </div>
+        <div class="panel-body">
+          <label>By: {{ blog.author }}</label>
+          <small>{{ blog.publish_date }}</small>
+          <p>{{ blog.lede }} {{ blog.content|truncatewords:50 }}</p>
+        </div>
+      </div>
     {% endfor %}
-    </dl>
   {% else %}
     <p>Nothing is currently published. Come back soon!</p>
   {% endif %}
