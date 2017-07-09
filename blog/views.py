@@ -1,11 +1,10 @@
 """View methods."""
 from __future__ import unicode_literals
 
-from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.views.generic import DetailView, ListView
 
-from .models import Blog, map_blogs_to_author
+from .models import Author, Blog
 
 
 class BlogListView(ListView):
@@ -38,12 +37,23 @@ class AboutDetailView(ListView):
         return render(request, 'about.html', None)
 
 
-def authors(request):
-    """About authors page."""
-    _authors = User.objects.filter(is_staff=True)
-    results = {}
-    author_data = map_blogs_to_author(_authors)
+class AuthorListView(ListView):
+    model = Author
 
-    results['author_data'] = author_data
+    def get(self, request):
+        """Author List page."""
+        queryset = Author.objects.all()
+        blogs = Blog.objects.all()
+        results = {}
+        results['authors'] = []
+        for a in queryset:
+            results['authors'].append(
+                {'name': a.__str__(), 'blogs': blogs.filter(author=a.id)}
+            )
 
-    return render(request, 'authors.html', results)
+        return render(request, 'author_list.html', results)
+
+
+class AuthorDetailView(DetailView):
+    model = Author
+    template_name = 'author_detail.html'
