@@ -42,7 +42,7 @@ class Image(models.Model):
 
     title = models.CharField(max_length=300, default='')
     description = models.CharField(max_length=300, default='')
-    img = models.ImageField()
+    img = models.ImageField(upload_to='images/')
 
 
 @receiver(post_delete, sender=Image)
@@ -55,7 +55,7 @@ class Style(models.Model):
 
     title = models.CharField(max_length=300, default='')
     description = models.CharField(max_length=300, default='')
-    css = models.FileField()
+    css = models.FileField(upload_to='css/')
 
 
 @receiver(post_delete, sender=Style)
