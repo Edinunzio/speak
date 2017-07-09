@@ -15,6 +15,23 @@
         <a href="/"><div class="logo"><span class="glyphicon glyphicon-transfer" aria-hidden="true"></span></div></a>
       </div>
       <div class="col-sm-10 col-md-10 col-lg-10">
+      {% if not request.user.is_authenticated %}
+        <div class="login pull-right">
+          <form class="form-inline" method="post" id="form-login" action="/login/">{% csrf_token %}
+            <div class="form-group">
+              <label class="sr-only" for="username">username</label>
+              <input type="text" class="form-control input-sm" id="username" name="username" placeholder="username">
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="password">Password</label>
+              <input type="password" class="form-control input-sm" id="password" name="password" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-default btn-sm">Sign in</button>
+          </form>
+        </div>
+        {% else %}
+        <a href="/logout/" class="pull-right">Logout</a>
+        {% endif %}
         <div class="page-header">
           {% block topbar %}<h1>From server to server: <small>Fumbling through analog to digital</small></h1>{% endblock topbar %}
         </div>

@@ -10,6 +10,9 @@ a{
     text-align: center;
     color: #fff;
 }
+div.login{
+    margin-top: 10px;
+}
 
 .about img {
     width: 100px;
@@ -36,4 +39,3 @@ span.glyphicon{
 nav a{
     color: #fff;
 }
-
