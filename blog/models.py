@@ -50,6 +50,19 @@ def delete_image(sender, instance, **kwargs):
     os.remove(instance.img.path)
 
 
+class Style(models.Model):
+    """Library of uploaded stylesheets to select from."""
+
+    title = models.CharField(max_length=300, default='')
+    description = models.CharField(max_length=300, default='')
+    css = models.FileField()
+
+
+@receiver(post_delete, sender=Style)
+def delete_style(sender, instance, **kwargs):
+    os.remove(instance.css.path)
+
+
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:

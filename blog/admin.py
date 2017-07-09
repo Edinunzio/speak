@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from .models import Author, Blog, Image
+from .models import Author, Blog, Image, Style
 
 
 class BlogAdmin(admin.ModelAdmin):
@@ -42,3 +42,4 @@ class AuthorAdmin(admin.ModelAdmin):
 admin.site.register(Blog, BlogAdmin)
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Image)
+admin.site.register(Style)
