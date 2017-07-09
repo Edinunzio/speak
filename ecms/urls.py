@@ -33,13 +33,13 @@ urlpatterns = [
         name='detail'
     ),
     url(
-        regex=r'^about/$',
-        view=views.AboutDetailView.as_view(),
-        name='about'
-    ),
-    url(
         regex=r'^authors/$',
         view=views.AuthorListView.as_view(),
         name='authors'
+    ),
+    url(
+        regex=r'^author/(?P<username>[-\w]+)/$',
+        view=views.AuthorDetailView.as_view(),
+        name='author'
     ),
 ]

@@ -1,6 +1,7 @@
 """View methods."""
 from __future__ import unicode_literals
 
+from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.views.generic import DetailView, ListView
 
@@ -24,17 +25,7 @@ class BlogListView(ListView):
 
 class BlogDetailView(DetailView):
     model = Blog
-    template_name = 'detail.html'
-
-
-class AboutDetailView(ListView):
-    model = Blog
-    template_name = 'about.html'
-
-    def get(self, request):
-        """About page."""
-
-        return render(request, 'about.html', None)
+    template_name = 'blog_detail.html'
 
 
 class AuthorListView(ListView):
@@ -48,7 +39,11 @@ class AuthorListView(ListView):
         results['authors'] = []
         for a in queryset:
             results['authors'].append(
-                {'name': a.__str__(), 'blogs': blogs.filter(author=a.id)}
+                {
+                    'name': a.__str__(),
+                    'blogs': blogs.filter(author=a.id),
+                    'username': a.user.username
+                }
             )
 
         return render(request, 'author_list.html', results)
@@ -57,3 +52,12 @@ class AuthorListView(ListView):
 class AuthorDetailView(DetailView):
     model = Author
     template_name = 'author_detail.html'
+
+    def get(self, request, username):
+        _user = User.objects.get(username=username)
+        results = {}
+        author = Author.objects.get(user=_user.id)
+        results['author'] = author
+        """Author detail page."""
+
+        return render(request, 'author_detail.html', results)
