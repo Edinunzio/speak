@@ -5,20 +5,26 @@
 {% block content %}
   <div class="content authors">
     <h3>Authors</h3>
-  {% for a in author_data %}
+  {% for a in authors %}
     <div class="media">
       <div class="media-left">
         <span class="glyphicon glyphicon-user media-object" aria-hidden="true"></span>
-        <p>{{ a.author }}</p>
+        <a href="../author/{{ a.username }}">
+          <p>{{ a.name }}</p>
+        </a>
       </div>
       <div class="media-body well">
         <dl>
-        {% for b in a.blogs %}
-          <dt>
-            <a href="../{{ b.slug }}" class="media-heading">{{ b.title }}: </a>
-          </dt>
-          <dl>{{ b.lede|truncatewords:10 }}</dl>
-        {% endfor %}
+        {% if a.blogs %}
+          {% for b in a.blogs %}
+            <dt>
+              <a href="../blog/{{ b.slug }}" class="media-heading">{{ b.title }}: </a>
+            </dt>
+            <dl>{{ b.lede|truncatewords:10 }}</dl>
+          {% endfor %}
+        {% else %}
+          <dl>No blogs posted.</dl>
+        {% endif %}
         </dl>
       </div>
     </div>

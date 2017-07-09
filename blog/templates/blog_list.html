@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h3>All Blogs</h3>
+<h3>Recent Blogs</h3>
+{{results}}
   {% if blogs %}
     {% for blog in blogs %}
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h4><a href="{{blog.slug}}" class="panel-title">{{ blog.title }}</a>
+          <h4><a href="blog/{{blog.slug}}" class="panel-title">{{ blog.title }}</a>
           </h4>
         </div>
         <div class="panel-body">
-          <label>By: {{ blog.author }}</label>
+          <label>By: <a href="author/{{ blog.author.user.username }}">{{ blog.author }}</a></label>
           <small>{{ blog.publish_date }}</small>
           <p>{{ blog.lede }} {{ blog.content|truncatewords:50 }}</p>
         </div>

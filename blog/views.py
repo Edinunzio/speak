@@ -1,42 +1,63 @@
 """View methods."""
 from __future__ import unicode_literals
 
-from django.shortcuts import render
-
-from .models import Blog, map_blogs_to_author
 from django.contrib.auth.models import User
+from django.shortcuts import render
+from django.views.generic import DetailView, ListView
+
+from .models import Author, Blog
 
 
-def index(request):
-    """Landing page for all blogs."""
-    results = {}
-    blogs = Blog.objects.filter(is_published=True).order_by('-publish_date')
-    results['blogs'] = blogs
+class BlogListView(ListView):
+    model = Blog
+    queryset = Blog.objects.all()
+    template_name = 'blog_list.html'
 
-    return render(request, 'index.html', results)
-
-
-def detail(request, slug):
-    """Renders individual blog post."""
-    results = {}
-    blog = Blog.objects.get(slug__iexact=slug)
-    results['blog'] = blog
-
-    return render(request, 'detail.html', results)
+    def get(self, request):
+        """Landing page for all blogs."""
+        queryset = self.queryset.filter(is_published=True)
+        results = {}
+        results['blogs'] = []
+        for blog in queryset:
+            results['blogs'].append(blog)
+        return render(request, 'blog_list.html', results)
 
 
-def about(request):
-    """About page."""
+class BlogDetailView(DetailView):
+    model = Blog
+    template_name = 'blog_detail.html'
 
-    return render(request, 'about.html', None)
+
+class AuthorListView(ListView):
+    model = Author
+
+    def get(self, request):
+        """Author List page."""
+        queryset = Author.objects.all()
+        blogs = Blog.objects.all()
+        results = {}
+        results['authors'] = []
+        for a in queryset:
+            results['authors'].append(
+                {
+                    'name': a.__str__(),
+                    'blogs': blogs.filter(author=a.id),
+                    'username': a.user.username
+                }
+            )
+
+        return render(request, 'author_list.html', results)
 
 
-def authors(request):
-    """About authors page."""
-    _authors = User.objects.filter(is_staff=True)
-    results = {}
-    author_data = map_blogs_to_author(_authors)
+class AuthorDetailView(DetailView):
+    model = Author
+    template_name = 'author_detail.html'
 
-    results['author_data'] = author_data
+    def get(self, request, username):
+        _user = User.objects.get(username=username)
+        results = {}
+        author = Author.objects.get(user=_user.id)
+        results['author'] = author
+        """Author detail page."""
 
-    return render(request, 'authors.html', results)
+        return render(request, 'author_detail.html', results)

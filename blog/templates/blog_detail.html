@@ -3,7 +3,7 @@
 
 {% block content %}
   <h3>{{ blog.title }}:<small> {{ blog.subtitle }}</small></h3>
-  <p>Published by: {{ blog.author }} | {{ blog.publish_date }}</p>
+  <p>Published by: <a href="../../author/{{ blog.author.user.username }}">{{ blog.author }}</a> | {{ blog.publish_date }}</p>
   <p class="lead">{{ blog.lede }}</p>
   {{ blog.content|linebreaks }}
 {% endblock content %}
