@@ -1,9 +1,11 @@
 """Blog related models."""
 from __future__ import unicode_literals
 
+import os
+
 from django.contrib.auth.models import User
 from django.db import models
-from django.db.models.signals import post_save
+from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 
 
@@ -33,6 +35,19 @@ class Blog(models.Model):
 
         verbose_name = 'Blog'
         verbose_name_plural = 'Blogs'
+
+
+class Image(models.Model):
+    """Library of uploaded images to select from."""
+
+    title = models.CharField(max_length=300, default='')
+    description = models.CharField(max_length=300, default='')
+    img = models.ImageField()
+
+
+@receiver(post_delete, sender=Image)
+def delete_image(sender, instance, **kwargs):
+    os.remove(instance.img.path)
 
 
 @receiver(post_save, sender=User)

@@ -145,3 +145,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     ('static/')
 ]
+MEDIA_URL = '/media/'
+MEDIA_ROOT = get_env_variable('R_MEDIA_ROOT')
