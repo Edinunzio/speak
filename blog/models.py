@@ -1,8 +1,8 @@
 """Blog related models."""
 from __future__ import unicode_literals
 
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
 
 USERS = User.objects.all()
 USER_CHOICES = ((u.get_full_name(), u.get_full_name()) for u in USERS)

@@ -1,34 +1,40 @@
 """View methods."""
 from __future__ import unicode_literals
 
+from django.contrib.auth.models import User
 from django.shortcuts import render
+from django.views.generic import DetailView, ListView
 
 from .models import Blog, map_blogs_to_author
-from django.contrib.auth.models import User
 
 
-def index(request):
-    """Landing page for all blogs."""
-    results = {}
-    blogs = Blog.objects.filter(is_published=True).order_by('-publish_date')
-    results['blogs'] = blogs
+class BlogListView(ListView):
+    model = Blog
+    queryset = Blog.objects.all()
+    template_name = 'blog_list.html'
 
-    return render(request, 'index.html', results)
-
-
-def detail(request, slug):
-    """Renders individual blog post."""
-    results = {}
-    blog = Blog.objects.get(slug__iexact=slug)
-    results['blog'] = blog
-
-    return render(request, 'detail.html', results)
+    def get(self, request):
+        """Landing page for all blogs."""
+        results = {}
+        results['blogs'] = []
+        for blog in self.queryset:
+            results['blogs'].append(blog)
+        return render(request, 'blog_list.html', results)
 
 
-def about(request):
-    """About page."""
+class BlogDetailView(DetailView):
+    model = Blog
+    template_name = 'detail.html'
 
-    return render(request, 'about.html', None)
+
+class AboutDetailView(ListView):
+    model = Blog
+    template_name = 'about.html'
+
+    def get(self, request):
+        """About page."""
+
+        return render(request, 'about.html', None)
 
 
 def authors(request):

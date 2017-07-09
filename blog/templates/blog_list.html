@@ -2,11 +2,12 @@
 
 {% block content %}
 <h3>All Blogs</h3>
+{{results}}
   {% if blogs %}
     {% for blog in blogs %}
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h4><a href="{{blog.slug}}" class="panel-title">{{ blog.title }}</a>
+          <h4><a href="blog/{{blog.slug}}" class="panel-title">{{ blog.title }}</a>
           </h4>
         </div>
         <div class="panel-body">

@@ -17,12 +17,26 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from blog import views
+
 from .settings import URL_ADMIN
 
 urlpatterns = [
     url(URL_ADMIN + '/', admin.site.urls),
-    url(r'^$', views.index),
-    url(r'^about/$', views.about),
+    url(
+        regex=r'^$',
+        view=views.BlogListView.as_view(),
+        name='get'
+    ),
+    url(
+        regex=r'^blog/(?P<slug>[-\w]+)/$',
+        view=views.BlogDetailView.as_view(),
+        name='detail'
+    ),
+    #url(r'^about/$', views.about),
+    url(
+        regex=r'^about/$',
+        view=views.AboutDetailView.as_view(),
+        name='about'
+    ),
     url(r'^authors/$', views.authors),
-    url(r'^(?P<slug>[-\w]+)/$', views.detail),
 ]
