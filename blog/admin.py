@@ -2,7 +2,8 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from .models import Blog
+
+from .models import Author, Blog
 
 
 class BlogAdmin(admin.ModelAdmin):
@@ -24,4 +25,19 @@ class BlogAdmin(admin.ModelAdmin):
     )
     ordering = ['-publish_date']
 
+
+class AuthorAdmin(admin.ModelAdmin):
+    """Set up admin fields for authors."""
+
+    list_display = (
+        'full_name',
+    )
+
+    def full_name(self, obj):
+        first_name = obj.user.first_name
+        last_name = obj.user.last_name
+        return first_name + ' ' + last_name
+
+
 admin.site.register(Blog, BlogAdmin)
+admin.site.register(Author, AuthorAdmin)

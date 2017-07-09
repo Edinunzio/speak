@@ -15,9 +15,10 @@ class BlogListView(ListView):
 
     def get(self, request):
         """Landing page for all blogs."""
+        queryset = self.queryset.filter(is_published=True)
         results = {}
         results['blogs'] = []
-        for blog in self.queryset:
+        for blog in queryset:
             results['blogs'].append(blog)
         return render(request, 'blog_list.html', results)
 
