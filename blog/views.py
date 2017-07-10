@@ -1,6 +1,7 @@
 """View methods."""
 from __future__ import unicode_literals
 
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.views.generic import DetailView, ListView
@@ -61,3 +62,8 @@ class AuthorDetailView(DetailView):
         """Author detail page."""
 
         return render(request, 'author_detail.html', results)
+
+
+def account(request):
+
+    return render(request, 'account_detail.html', None)
